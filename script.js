@@ -2,13 +2,20 @@ const apiKey = "baa30fa1b6a77a6d05d4b0e3c209e07a";
 const cityInput = document.getElementById("city");
 const searchBtn = document.getElementById("searchBtn");
 const Output = document.getElementById("output")
-
+let cities = []
 searchBtn.addEventListener("click", getWeather)
 
 function displayWeather(data) {
-    Output.innerHTML = `<h2>${data.name}</h2>
-                        <p>Temperature: ${data.main.temp}</p>
-                        <p>Condition: ${data.weather[0].description}`
+   Output.innerHTML = "";
+    data.map(city => {
+        const div = document.createElement("div");
+        div.innerHTML = `
+        <h2>${city.name}</h2>
+        <p>Temperature: ${city.temp}</p>
+        <p>Condition: ${city.condition}</p>
+        <hr>`;
+        Output.appendChild(div);
+    })
 }
 
 async function getWeather () {
@@ -26,5 +33,11 @@ async function getWeather () {
         Output.innerHTML = "<p>City Not Found!!!</p>"
         return
     }
-    displayWeather(data)
+    const cityList = {
+        name: data.name,
+        temp: data.main.temp,
+        condition: data.weather[0].description
+    }
+    cities.push(cityList);
+    displayWeather(cities);
 }
