@@ -10,7 +10,9 @@ function displayWeather(data) {
     data.map(city => {
         const div = document.createElement("div");
         div.innerHTML = `
-        <h2>${city.name}</h2>
+        <a href="forecast.html?city=${city.name}">
+            <h2>${city.name}</h2>
+        </a>
         <p>Temperature: ${city.temp}</p>
         <p>Condition: ${city.condition}</p>
         <hr>`;
