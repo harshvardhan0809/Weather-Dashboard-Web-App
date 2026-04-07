@@ -12,3 +12,87 @@ h1 {
     text-align: center;
     color: lightskyblue;
 }
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #141e30, #243b55);
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+}
+
+#Main {
+    margin-bottom: 20px;
+    color: #f5f5f5;
+}
+
+input {
+    padding: 10px;
+    width: 200px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #333;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+select {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#output {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+#output div {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+
+    /* 👇 KEY PART */
+    flex: 1 1 300px;
+    max-width: 500px;
+}
+
+#output a {
+    text-decoration: none;
+    color: #333;
+}
+
+#forecast {
+    margin-top: 30px;
+}
+
+#forecast div {
+    background: white;
+    padding: 10px;
+    margin: 10px auto;
+    width: 250px;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
