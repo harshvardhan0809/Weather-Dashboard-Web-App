@@ -14,3 +14,5 @@ OpenWeather API
     a. HTML
     b. CSS / Tailwind 
     c. JavaScript (to Fetch API)
+
+AUTHOR : -> HARSHVARDHAN DHANKHAR (E.NO: 2501010562)

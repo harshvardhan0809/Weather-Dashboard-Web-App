@@ -2,8 +2,10 @@ const apiKey = "baa30fa1b6a77a6d05d4b0e3c209e07a";
 const cityInput = document.getElementById("city");
 const searchBtn = document.getElementById("searchBtn");
 const Output = document.getElementById("output")
-let cities = []
-searchBtn.addEventListener("click", getWeather)
+let cities = [];
+const popCities = ["Delhi", "Washington", "Sonipat", "New York", "Tokyo", "Paris", "Mumbai", "London"];
+
+searchBtn.addEventListener("click", () => getWeather());
 
 function displayWeather(data) {
    Output.innerHTML = "";
@@ -13,33 +15,46 @@ function displayWeather(data) {
         <a href="forecast.html?city=${city.name}">
             <h2>${city.name}</h2>
         </a>
-        <p>Temperature: ${city.temp}</p>
+        <p>Temperature: ${city.temp}°C</p>
         <p>Condition: ${city.condition}</p>
         <hr>`;
         Output.appendChild(div);
-    })
-}
+    });
+};
 
-async function getWeather () {
-    const city = cityInput.value;
+async function getWeather (presentCities) {
+    const city = presentCities || cityInput.value;
     if (city == "") {
         alert("Enter City Name");
         return;
-    }
-    
-    Output.innerHTML = "<p>Loading...</p>"
+    };
+    if (!presentCities) {
+        Output.innerHTML = "<p>Loading...</p>"
+    };
 
     const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
     const data = await res.json()
     if (data.cod !== 200) {
-        Output.innerHTML = "<p>City Not Found!!!</p>"
+        if (!presentCities) {
+            Output.innerHTML = "<p>City Not Found!!!</p>"
+        };
         return
-    }
+    };
     const cityList = {
         name: data.name,
         temp: data.main.temp,
         condition: data.weather[0].description
-    }
-    cities.push(cityList);
-    displayWeather(cities);
+    };
+    if (!cities.some((c) => c.name == cityList.name)) {
+        cities.push(cityList);
+        displayWeather(cities);
+    } else {
+        alert("City Already Exist")
+    };
+}
+
+window.onload = () =>{
+    popCities.forEach(city => {
+        getWeather(city)
+    })
 }
