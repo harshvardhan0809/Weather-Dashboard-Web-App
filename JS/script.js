@@ -4,6 +4,11 @@ const searchBtn = document.getElementById("searchBtn");
 const Output = document.getElementById("output")
 let cities = [];
 const popCities = ["Delhi", "Washington", "Sonipat", "New York", "Tokyo", "Paris", "Mumbai", "London"];
+const sortOption = document.getElementById("sort")
+const filterOption = document.getElementById("filter")
+
+sortOption.addEventListener("change", filterSortFunc)
+filterOption.addEventListener("change", filterSortFunc)
 
 searchBtn.addEventListener("click", () => getWeather());
 
@@ -57,4 +62,21 @@ window.onload = () =>{
     popCities.forEach(city => {
         getWeather(city)
     })
+}
+
+function filterSortFunc () {
+    let result = [...cities]
+    if (filterOption.value === "hot") {
+        result = result.filter(t => t.temp > 30)
+    }
+    if (filterOption.value === "cold") {
+        result = result.filter(t => t.temp < 10)
+    }
+
+    if (sortOption.value === "temp") {
+        result.sort((a, b) => a.temp - b.temp)
+    } else if (sortOption.value === "name") {
+        result.sort((a, b) => a.name.localeCompare(b.name))
+    }
+    displayWeather(result)
 }
