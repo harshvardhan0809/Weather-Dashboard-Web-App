@@ -4,6 +4,11 @@ const forecastDiv = document.getElementById("forecast")
 const params = new URLSearchParams(window.location.search);
 const city = params.get("city");
 
+const toggleTheme = document.getElementById("themeToggle")
+toggleTheme.addEventListener("click", () => {
+    document.body.classList.toggle("light")
+})
+
 getForecast(city);
 
 async function getForecast(city) {

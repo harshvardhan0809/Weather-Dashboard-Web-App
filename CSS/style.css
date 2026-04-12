@@ -94,3 +94,39 @@ select {
     border-radius: 10px;
     box-shadow: 0 3px 8px rgba(0,0,0,0.1);
 }
+
+.light {
+    background: #f5f7fa !important;
+    color: #222 !important;
+}
+
+.light #Main {
+    color: #222;
+}
+
+.light #output div {
+    background: #ffffff;
+    color: #222;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.light #output a {
+    color: #000;
+}
+
+.light input {
+    background: #ffffff;
+    color: #000;
+    border: 1px solid #ccc;
+}
+
+.light button {
+    background-color: #0077ff;
+    color: white;
+}
+
+.light select {
+    background: #ffffff;
+    color: #000;
+    border: 1px solid #ccc;
+}

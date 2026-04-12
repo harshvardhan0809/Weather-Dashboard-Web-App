@@ -7,6 +7,11 @@ const popCities = ["Delhi", "Washington", "Sonipat", "New York", "Tokyo", "Paris
 const sortOption = document.getElementById("sort")
 const filterOption = document.getElementById("filter")
 
+const toggleTheme = document.getElementById("lightDark")
+toggleTheme.addEventListener("click", () => {
+    document.body.classList.toggle("light")
+})
+
 sortOption.addEventListener("change", filterSortFunc)
 filterOption.addEventListener("change", filterSortFunc)
 
@@ -69,7 +74,7 @@ function filterSortFunc () {
     if (filterOption.value === "hot") {
         result = result.filter(t => t.temp > 30)
     }
-    if (filterOption.value === "cold") {
+    else if (filterOption.value === "cold") {
         result = result.filter(t => t.temp < 10)
     }
 
