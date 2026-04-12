@@ -24,14 +24,14 @@ async function getForecast(city) {
 }
 
 function showForecast(list) {
-    forecastDiv.innerHTML = `<h2>${city} Forecast</h2>
-                            <br>`;
+    document.getElementById("cityTitle").innerText = `${city} Forecast`;
+    forecastDiv.innerHTML = "";
 
-    list.slice(0, 8).map(item => {
+    list.slice(0, 9).map(item => {
         const div = document.createElement("div");
 
         div.innerHTML = `
-            <p>${item.dt_txt}</p>
+            <p>${new Date(item.dt_txt).toLocaleString()}</p>
             <p>${item.main.temp}°C</p>
         `;
 
